@@ -16,15 +16,6 @@ class _ListaNovaState extends State<ListaNova> {
   Widget build(BuildContext context) {
     var snapshots = Firestore.instance.collection('item').snapshots();
 
-    // var video= 'iLnmTe5Q2Qw';
-    // YoutubePlayerController _controller = YoutubePlayerController(
-    //   initialVideoId: video,
-    //   flags: YoutubePlayerFlags(
-    //     autoPlay: false,
-    //     mute: true,
-    //   ),
-    // );
-
     return Container(
         child: StreamBuilder(
       stream: snapshots,
@@ -45,11 +36,7 @@ class _ListaNovaState extends State<ListaNova> {
           itemCount: snaphots.data.documents.length,
           itemBuilder: (context, int i) {
             var item = snaphots.data.documents[i].data;
-            // String videoId;
-            // videoId = YoutubePlayer.convertUrlToId(item['link']);
-            // print(videoId);
-            // video = videoId;
-            // _controller.load(video);
+
             return Container(
               padding: const EdgeInsets.all(8),
               child: ListTile(
@@ -75,10 +62,6 @@ class _ListaNovaState extends State<ListaNova> {
                         },
                         tooltip: "Abrir o video no youtube",
                       ),
-                      // YoutubePlayer(
-                      //   controller: _controller,
-                      //   width: 100,
-                      // ),
                       IconButton(
                         icon: Icon(Icons.delete),
                         onPressed: () {
