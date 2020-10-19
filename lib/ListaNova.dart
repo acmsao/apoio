@@ -82,8 +82,7 @@ class _ListaNovaState extends State<ListaNova> {
                       IconButton(
                         icon: Icon(Icons.delete),
                         onPressed: () {
-                          Deletar(item[i]);
-                          print(item[i]);
+                          Deletar(snaphots.data.documents[i].documentID);
                         },
                         color: Colors.red,
                       ),
