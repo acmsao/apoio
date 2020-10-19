@@ -38,7 +38,7 @@ class _ListaState extends State<Lista> {
           leading: SizedBox(
             width: 128,
             height: 128,
-            child: Image.asset('imagens/logo.png',),
+            child: Image.asset('imagens/logo2.png',),
           ),
         ),
         body: Stack(

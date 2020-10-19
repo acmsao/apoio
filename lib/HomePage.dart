@@ -1,3 +1,4 @@
+import 'package:apoio/Mensagem.dart';
 import 'package:apoio/models/lista.dart';
 import 'package:apoio/models/login.dart';
 import 'package:apoio/models/usuario.dart';
@@ -35,7 +36,9 @@ class _HomePageState extends State<HomePage> {
         leading: SizedBox(
           width: 250,
           height: 250,
-          child: Image.asset('imagens/logo.png'),
+          
+          child: Image.asset('imagens/logo2.png'),
+          
         ),
       ),
       body: Stack(
@@ -128,7 +131,7 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Lista(),
+                              builder: (context) => Mensagem(),
                             ),
                           ),
                         }
