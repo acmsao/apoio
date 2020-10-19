@@ -17,7 +17,7 @@ class Mensagem extends StatelessWidget {
           ),
         ),
         body: Stack(fit: StackFit.expand, children: <Widget>[
-          Image.asset('imagens/logo.png'),
+          Image.asset('imagens/apoio2.png'),
           Container(
               color: Colors.white.withOpacity(0.8),
               padding: EdgeInsets.all(80),
