@@ -1,15 +1,27 @@
-import 'package:apoio/models/lista.dart';
+import 'package:apoio/lista%20usuarios.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class Adicionar extends StatelessWidget {
+class AdicionarUsu extends StatefulWidget {
+  AdicionarUsu({this.id});
+  final String id;
+
+  @override
+  _AdicionarUsuState createState() => _AdicionarUsuState();
+}
+
+class _AdicionarUsuState extends State<AdicionarUsu> {
   @override
   Widget build(BuildContext context) {
-    var snapshots = Firestore.instance.collection('item');
-    TextEditingController txtcurso = TextEditingController();
-    TextEditingController txtmateria = TextEditingController();
-    TextEditingController txtdescricao = TextEditingController();
-    TextEditingController txtlink = TextEditingController();
+    var snapshots = Firestore.instance.collection('usuarios');
+    TextEditingController txtnome = TextEditingController();
+    TextEditingController txttipo = TextEditingController();
+    TextEditingController txtsenha = TextEditingController();
+    if (widget.id != null) {
+      snapshots
+          .where(snapshots.document().documentID, isEqualTo: widget.id)
+          .getDocuments();
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -38,11 +50,11 @@ class Adicionar extends StatelessWidget {
                 ),
                 Padding(padding: EdgeInsets.all(10)),
                 TextFormField(
-                  controller: txtcurso,
+                  controller: txtnome,
                   keyboardType: TextInputType.name,
                   obscureText: false,
                   decoration: InputDecoration(
-                      labelText: "Curso",
+                      labelText: "Nome",
                       labelStyle: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w400,
@@ -51,11 +63,11 @@ class Adicionar extends StatelessWidget {
                 ),
                 Padding(padding: EdgeInsets.all(10)),
                 TextFormField(
-                  controller: txtmateria,
-                  keyboardType: TextInputType.name,
+                  controller: txtsenha,
+                  keyboardType: TextInputType.number,
                   obscureText: false,
                   decoration: InputDecoration(
-                      labelText: "Matéria",
+                      labelText: "Senha",
                       labelStyle: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w400,
@@ -64,11 +76,11 @@ class Adicionar extends StatelessWidget {
                 ),
                 Padding(padding: EdgeInsets.all(10)),
                 TextFormField(
-                  controller: txtdescricao,
+                  controller: txttipo,
                   keyboardType: TextInputType.name,
                   obscureText: false,
                   decoration: InputDecoration(
-                      labelText: "Descrição",
+                      labelText: "Tipo",
                       labelStyle: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w400,
@@ -76,18 +88,6 @@ class Adicionar extends StatelessWidget {
                       )),
                 ),
                 Padding(padding: EdgeInsets.all(10)),
-                TextFormField(
-                  controller: txtlink,
-                  keyboardType: TextInputType.name,
-                  obscureText: false,
-                  decoration: InputDecoration(
-                      labelText: "Link",
-                      labelStyle: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 20,
-                      )),
-                ),
                 Container(
                   padding: EdgeInsets.all(10),
                   child: Row(
@@ -110,15 +110,14 @@ class Adicionar extends StatelessWidget {
                         child: FlatButton(
                             onPressed: () {
                               snapshots.add({
-                                'curso': txtcurso.text,
-                                'materia': txtmateria.text,
-                                'descricao' : txtdescricao.text,
-                                'link' : txtlink.text
+                                'nome': txtnome.text,
+                                'senha': txtsenha.text,
+                                'tipo': txttipo.text,
                               });
-                               Navigator.push(
+                              Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Lista()));
+                                      builder: (context) => ListaUsuarios()));
                             },
                             child: Text("Adicionar")),
                       ),

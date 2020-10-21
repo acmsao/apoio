@@ -1,7 +1,10 @@
 import 'package:apoio/adicionar.dart';
+import 'package:apoio/lista%20usuarios.dart';
 import 'package:flutter/material.dart';
 
 import '../ListaNova.dart';
+
+enum WhyFarther { harder, smarter }
 
 // ignore: must_be_immutable
 class Lista extends StatefulWidget {
@@ -26,7 +29,40 @@ class _ListaState extends State<Lista> {
             ),
           ),
           actions: <Widget>[
-            Text(widget.usu,)
+            Icon(Icons.account_circle),
+            Center(
+                child:
+                    Text(widget.usu + "   ", style: TextStyle(fontSize: 20))),
+            PopupMenuButton<WhyFarther>(
+              onSelected: (WhyFarther result) {
+                switch (result) {
+                  case WhyFarther.harder:
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ListaUsuarios(),
+                      ),
+                    );
+
+                    break;
+                  case WhyFarther.smarter:
+                    break;
+
+                  default:
+                }
+              },
+              itemBuilder: (BuildContext context) =>
+                  <PopupMenuEntry<WhyFarther>>[
+                const PopupMenuItem<WhyFarther>(
+                  value: WhyFarther.harder,
+                  child: Text('Usuarios'),
+                ),
+                const PopupMenuItem<WhyFarther>(
+                  value: WhyFarther.smarter,
+                  child: Text('Sobre'),
+                ),
+              ],
+            ),
           ],
         ),
         body: Stack(
