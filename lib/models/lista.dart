@@ -8,8 +8,9 @@ enum WhyFarther { harder, smarter }
 
 // ignore: must_be_immutable
 class Lista extends StatefulWidget {
-  Lista({this.usu});
+  Lista({this.usu, this.tipo});
   final String usu;
+  final String tipo;
 
   @override
   _ListaState createState() => _ListaState();

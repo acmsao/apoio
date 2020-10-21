@@ -45,25 +45,11 @@ class _ListaUsuariosState extends State<ListaUsuarios> {
                   padding: const EdgeInsets.all(8),
                   child: ListTile(
                     leading: Text(item['nome']),
-                    title: Text(item['tipo']),
                     trailing: Container(
                       width: 100,
                       child: Row(
                         children: <Widget>[
-                          IconButton(
-                            icon: Icon(Icons.edit),
-                            onPressed: () {
-
-                               Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => AdicionarUsu(id: snaphots.data.documents[i].documentID)
-                                      )
-                                      );
-                             
-                            },
-                            tooltip: "Editar",
-                          ),
+                          Text(item['tipo']),
                           IconButton(
                             icon: Icon(Icons.delete),
                             onPressed: () {
@@ -81,6 +67,18 @@ class _ListaUsuariosState extends State<ListaUsuarios> {
               separatorBuilder: (context, index) => const Divider(),
             );
           },
-        ));
+        ),
+        floatingActionButton: FloatingActionButton(onPressed: (){
+        
+         Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AdicionarUsu(),
+              ),
+            );
+        },
+        child: Icon(Icons.add),
+        ),
+        );
   }
 }
