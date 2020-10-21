@@ -1,4 +1,3 @@
-import 'package:apoio/models/lista.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -115,10 +114,7 @@ class Adicionar extends StatelessWidget {
                                 'descricao' : txtdescricao.text,
                                 'link' : txtlink.text
                               });
-                               Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Lista()));
+                               Navigator.pop(context);
                             },
                             child: Text("Adicionar")),
                       ),

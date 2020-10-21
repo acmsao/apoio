@@ -80,6 +80,7 @@ class _AdicionarUsuState extends State<AdicionarUsu> {
                   keyboardType: TextInputType.name,
                   obscureText: false,
                   decoration: InputDecoration(
+                      hintText: 'adm ou usuario',
                       labelText: "Tipo",
                       labelStyle: TextStyle(
                         color: Colors.black,
@@ -109,6 +110,9 @@ class _AdicionarUsuState extends State<AdicionarUsu> {
                         ),
                         child: FlatButton(
                             onPressed: () {
+                              if (txttipo.text != 'adm') {
+                                txttipo.text = 'usuario';
+                              }
                               snapshots.add({
                                 'nome': txtnome.text,
                                 'senha': txtsenha.text,
