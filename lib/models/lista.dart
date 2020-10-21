@@ -1,5 +1,6 @@
 import 'package:apoio/adicionar.dart';
 import 'package:apoio/lista%20usuarios.dart';
+import 'package:apoio/sobre.dart';
 import 'package:flutter/material.dart';
 
 import '../ListaNova.dart';
@@ -47,6 +48,12 @@ class _ListaState extends State<Lista> {
 
                     break;
                   case WhyFarther.smarter:
+                   Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Sobre(),
+                      ),
+                    );
                     break;
 
                   default:
