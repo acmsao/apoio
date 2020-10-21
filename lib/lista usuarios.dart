@@ -57,7 +57,7 @@ class _ListaUsuariosState extends State<ListaUsuarios> {
                                Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => AdicionarUsu(snaphots.data.documents[i].documentID)
+                                      builder: (context) => AdicionarUsu(id: snaphots.data.documents[i].documentID)
                                       )
                                       );
                              
