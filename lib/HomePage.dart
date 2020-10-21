@@ -36,9 +36,7 @@ class _HomePageState extends State<HomePage> {
         leading: SizedBox(
           width: 250,
           height: 250,
-          
           child: Image.asset('imagens/logo2.png'),
-          
         ),
       ),
       body: Stack(
@@ -121,7 +119,7 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Lista(),
+                              builder: (context) => Lista(usu: txtnome.text),
                             ),
                           ),
                         }
