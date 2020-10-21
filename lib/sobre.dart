@@ -19,7 +19,7 @@ class Sobre extends StatelessWidget {
           Image.asset('imagens/apoio2.png'),
           Container(
               color: Colors.white.withOpacity(0.9),
-              padding: EdgeInsets.all(30),
+              padding: EdgeInsets.all(10),
               child: ListView(children: <Widget>[
                 SizedBox(
                   width: 200,
@@ -27,14 +27,15 @@ class Sobre extends StatelessWidget {
                   child: Image.asset('imagens/logo.png'),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(20),
+                  padding: EdgeInsets.all(10),
                 ),
                 Text(
                   'Projeto Integrador para o curso de Engenharia da Computação da UNIVESP',
-                  style: TextStyle(),
+                  
+                  style: TextStyle( color: Colors.black),
                   textAlign: TextAlign.center,
                 ),
-                Padding(padding: EdgeInsets.all(20)),
+                Padding(padding: EdgeInsets.all(10)),
                 Text(
                   'Orientadora: Kathia Nogima',
                   style: TextStyle(),

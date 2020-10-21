@@ -29,7 +29,7 @@ class Adicionar extends StatelessWidget {
             color: Colors.white.withOpacity(0.9),
             child: ListView(
               children: <Widget>[
-                Padding(padding: EdgeInsets.all(50)),
+                Padding(padding: EdgeInsets.all(20)),
                 Text(
                   "Adicionar novo item",
                   style: TextStyle(fontSize: 25, color: Colors.red),
@@ -93,8 +93,8 @@ class Adicionar extends StatelessWidget {
                     children: <Widget>[
                       Container(
                         height: 40,
-                        width: 150,
-                        padding: EdgeInsets.all(10),
+                        width: 120,
+                        padding: EdgeInsets.all(5),
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                             begin: Alignment.topLeft,
@@ -121,7 +121,7 @@ class Adicionar extends StatelessWidget {
                       Padding(padding: EdgeInsets.all(15)),
                       Container(
                         height: 40,
-                        width: 150,
+                        width: 120,
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
