@@ -34,7 +34,7 @@ class _ListaState extends State<Lista> {
             Icon(Icons.account_circle),
             Center(
                 child:
-                    Text(widget.usu + "   ", style: TextStyle(fontSize: 20))),
+                    Text(widget.usu + "   ", style: TextStyle(fontSize: 15))),
             PopupMenuButton<WhyFarther>(
               onSelected: (WhyFarther result) {
                 switch (result) {
