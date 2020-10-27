@@ -65,7 +65,35 @@ class _ListaNovaState extends State<ListaNova> {
                       IconButton(
                         icon: Icon(Icons.delete),
                         onPressed: () {
-                          Deletar(snaphots.data.documents[i].documentID,'item');
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => AlertDialog(
+                            title: Text('Apagar Item'),
+                            content: SingleChildScrollView(
+                              child: ListBody(
+                                children: <Widget>[
+                                  Text('Deseja realmente apagar este item?',style: TextStyle(fontSize: 20)),
+                                  Padding(padding: EdgeInsets.all(20)),
+                                  Text('Esta ação é irreversível'),
+                                ],
+                              ),
+                            ),
+                            actions: <Widget>[
+                              FlatButton(onPressed: (){
+                                  Deletar(
+                              snaphots.data.documents[i].documentID, 'item');
+                              Navigator.of(context).pop();
+                              }, child: Text('Apagar',style: TextStyle(fontSize: 20))),
+                              Padding(padding: EdgeInsets.all(40)),
+                              FlatButton(
+                                child: Text('Voltar',style: TextStyle(fontSize: 20),),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          ),
+                          )
+                          );
+                        
                         },
                         color: Colors.red,
                       ),

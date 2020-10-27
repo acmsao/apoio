@@ -95,7 +95,7 @@ class _AdicionarUsuState extends State<AdicionarUsu> {
                     children: <Widget>[
                       Container(
                         height: 40,
-                        width: 150,
+                        width: 120,
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
@@ -128,7 +128,7 @@ class _AdicionarUsuState extends State<AdicionarUsu> {
                       Padding(padding: EdgeInsets.all(15)),
                       Container(
                         height: 40,
-                        width: 150,
+                        width: 120,
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
