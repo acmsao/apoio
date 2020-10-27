@@ -44,7 +44,7 @@ class Login {
       print(element.data);
       var tipo = element.data['tipo'];
       
-      if (tipo == true) {
+      if (tipo == "adm") {
         log = true;
       } else {
         log = false;

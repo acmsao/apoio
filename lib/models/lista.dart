@@ -1,5 +1,6 @@
 import 'package:apoio/adicionar.dart';
 import 'package:apoio/lista%20usuarios.dart';
+import 'package:apoio/models/login.dart';
 import 'package:apoio/sobre.dart';
 import 'package:flutter/material.dart';
 
@@ -36,19 +37,51 @@ class _ListaState extends State<Lista> {
                 child:
                     Text(widget.usu + "   ", style: TextStyle(fontSize: 15))),
             PopupMenuButton<WhyFarther>(
-              onSelected: (WhyFarther result) {
+              onSelected: (WhyFarther result) async {
                 switch (result) {
                   case WhyFarther.harder:
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ListaUsuarios(),
-                      ),
-                    );
+                    var adm = await Login().usu(widget.usu);
+                    print(adm);
+                    if (adm == true) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ListaUsuarios(),
+                        ),
+                      );
+                    }else {
+                       Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => AlertDialog(
+                                    title: Text('Não autorizado'),
+                                    content: SingleChildScrollView(
+                                      child: ListBody(
+                                        children: <Widget>[
+                                          Text(
+                                              'Acesso autorizado apenas para administradores',
+                                              style: TextStyle(fontSize: 20)),
+                                          ],
+                                      ),
+                                    ),
+                                    actions: <Widget>[
+                                      FlatButton(
+                                        child: Text(
+                                          'Voltar',
+                                          style: TextStyle(fontSize: 20),
+                                        ),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                ));
+                    }
 
                     break;
                   case WhyFarther.smarter:
-                   Navigator.push(
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => Sobre(),
