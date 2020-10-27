@@ -6,7 +6,7 @@ class Login {
 
   Future<bool> main(nome, senha) async {
     var db = Firestore.instance;
-    var log;
+    bool log;
 
     QuerySnapshot resultado = await db
         .collection('usuarios')
@@ -24,6 +24,29 @@ class Login {
         log = true;
       } else {
         print('errado');
+        log = false;
+      }
+    });
+    return log;
+  }
+
+
+   Future<bool> usu(nome) async {
+    var db = Firestore.instance;
+    var log;
+
+    QuerySnapshot resultado = await db
+        .collection('usuarios')
+        .where('nome', isEqualTo: nome)
+        .getDocuments();
+
+    resultado.documents.forEach((element) {
+      print(element.data);
+      var tipo = element.data['tipo'];
+      
+      if (tipo == true) {
+        log = true;
+      } else {
         log = false;
       }
     });
