@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 
 class Adicionar extends StatelessWidget {
   @override
+  
   Widget build(BuildContext context) {
     var snapshots = Firestore.instance.collection('item');
     TextEditingController txtcurso = TextEditingController();
     TextEditingController txtmateria = TextEditingController();
     TextEditingController txtdescricao = TextEditingController();
     TextEditingController txtlink = TextEditingController();
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Apoio ao estudo de engenharia',
@@ -111,10 +111,10 @@ class Adicionar extends StatelessWidget {
                               snapshots.add({
                                 'curso': txtcurso.text,
                                 'materia': txtmateria.text,
-                                'descricao' : txtdescricao.text,
-                                'link' : txtlink.text
+                                'descricao': txtdescricao.text,
+                                'link': txtlink.text
                               });
-                               Navigator.pop(context);
+                              Navigator.pop(context);
                             },
                             child: Text("Adicionar")),
                       ),
