@@ -118,10 +118,38 @@ class _HomePageState extends State<HomePage> {
                           print("ok"),
                           Navigator.push(
                             context,
+
+                            //mensagem de inicio
                             MaterialPageRoute(
-                              builder: (context) => Lista(usu: txtnome.text),
-                            ),
-                          ),
+                                builder: (context) => AlertDialog(
+                                  title: Text('Bem vindo!'),
+                                  content: SingleChildScrollView(
+                                    child: ListBody(
+                                      children: <Widget>[
+                                        Text(
+                                            'Agradecemos pela participação em nosso projeto, espero que goste do nosso app',
+                                            style: TextStyle(fontSize: 20)),
+                                        Padding(padding: EdgeInsets.all(10)),
+                                        Text('Pedimos que após o teste, faça a pesquisa de opnião, acessando o menu superior,e clicando em pesquisa'),
+                                      ],
+                                    ),
+                                  ),
+                                  actions: <Widget>[
+                                    FlatButton(
+                                        onPressed: () {
+                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Lista(usu: txtnome.text), ));
+                                        },
+                                        child: Text('Continuar',
+                                            style: TextStyle(fontSize: 20))),
+                                   
+                                   
+                                  ],
+                                ),
+                              )),
+                          //   MaterialPageRoute(
+                          //     builder: (context) => Lista(usu: txtnome.text),
+                          //   ),
+                          // ),
                         }
                       else
                         {

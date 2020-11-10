@@ -1,4 +1,5 @@
 import 'package:apoio/adicionar.dart';
+import 'package:apoio/externo.dart';
 import 'package:apoio/lista%20usuarios.dart';
 import 'package:apoio/models/login.dart';
 import 'package:apoio/sobre.dart';
@@ -6,7 +7,7 @@ import 'package:flutter/material.dart';
 
 import '../ListaNova.dart';
 
-enum WhyFarther { harder, smarter }
+enum WhyFarther { harder, smarter, pesquisa }
 
 // ignore: must_be_immutable
 class Lista extends StatefulWidget {
@@ -49,34 +50,34 @@ class _ListaState extends State<Lista> {
                           builder: (context) => ListaUsuarios(),
                         ),
                       );
-                    }else {
-                       Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => AlertDialog(
-                                    title: Text('Não autorizado'),
-                                    content: SingleChildScrollView(
-                                      child: ListBody(
-                                        children: <Widget>[
-                                          Text(
-                                              'Acesso autorizado apenas para administradores',
-                                              style: TextStyle(fontSize: 20)),
-                                          ],
-                                      ),
-                                    ),
-                                    actions: <Widget>[
-                                      FlatButton(
-                                        child: Text(
-                                          'Voltar',
-                                          style: TextStyle(fontSize: 20),
-                                        ),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                    ],
+                    } else {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AlertDialog(
+                              title: Text('Não autorizado'),
+                              content: SingleChildScrollView(
+                                child: ListBody(
+                                  children: <Widget>[
+                                    Text(
+                                        'Acesso autorizado apenas para administradores',
+                                        style: TextStyle(fontSize: 20)),
+                                  ],
+                                ),
+                              ),
+                              actions: <Widget>[
+                                FlatButton(
+                                  child: Text(
+                                    'Voltar',
+                                    style: TextStyle(fontSize: 20),
                                   ),
-                                ));
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],
+                            ),
+                          ));
                     }
 
                     break;
@@ -87,6 +88,10 @@ class _ListaState extends State<Lista> {
                         builder: (context) => Sobre(),
                       ),
                     );
+                    break;
+                  case WhyFarther.pesquisa:
+                    Externo('https://forms.gle/GBPL8GfjErkYExms9');
+
                     break;
 
                   default:
@@ -101,6 +106,10 @@ class _ListaState extends State<Lista> {
                 const PopupMenuItem<WhyFarther>(
                   value: WhyFarther.smarter,
                   child: Text('Sobre'),
+                ),
+                 const PopupMenuItem<WhyFarther>(
+                  value: WhyFarther.pesquisa,
+                  child: Text('Pesquisa'),
                 ),
               ],
             ),
