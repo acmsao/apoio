@@ -2,6 +2,7 @@ import 'package:apoio/Mensagem.dart';
 import 'package:apoio/models/lista.dart';
 import 'package:apoio/models/login.dart';
 import 'package:apoio/models/usuario.dart';
+import 'package:apoio/pagina_constr.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -64,6 +65,7 @@ class _HomePageState extends State<HomePage> {
                 decoration: InputDecoration(
                     icon: Icon(Icons.account_circle),
                     labelText: "nome",
+                    hintText: 'univesp',
                     labelStyle: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w400,
@@ -81,6 +83,7 @@ class _HomePageState extends State<HomePage> {
                 decoration: InputDecoration(
                     icon: Icon(Icons.vpn_key),
                     labelText: 'Senha',
+                    hintText: '123',
                     labelStyle: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w400,
@@ -91,7 +94,10 @@ class _HomePageState extends State<HomePage> {
                 height: 40,
                 alignment: Alignment.centerRight,
                 child: FlatButton(
-                    onPressed: () {}, child: Text('Esqueci minha senha!')),
+                    onPressed: () {
+                      Navigator.push(context,
+                      MaterialPageRoute(builder: (context)=> PageConst()));
+                    }, child: Text('Esqueci minha senha!')),
               ),
               SizedBox(height: 40),
               Container(
@@ -117,10 +123,10 @@ class _HomePageState extends State<HomePage> {
                         {
                           print("ok"),
                           Navigator.push(
-                            context,
+                              context,
 
-                            //mensagem de inicio
-                            MaterialPageRoute(
+                              //mensagem de inicio
+                              MaterialPageRoute(
                                 builder: (context) => AlertDialog(
                                   title: Text('Bem vindo!'),
                                   content: SingleChildScrollView(
@@ -128,21 +134,28 @@ class _HomePageState extends State<HomePage> {
                                       children: <Widget>[
                                         Text(
                                             'Agradecemos pela participação em nosso projeto, espero que goste do nosso app',
-                                            style: TextStyle(fontSize: 20)),
+                                            style: TextStyle(fontSize: 20),textAlign: TextAlign.center,),
                                         Padding(padding: EdgeInsets.all(10)),
-                                        Text('Pedimos que após o teste, faça a pesquisa de opnião, acessando o menu superior,e clicando em pesquisa'),
+                                        Text(
+                                            'Esse aplicativo foi desenvolvido com a ideia de que os alunos dos cursos de engenharia pudessem compartilhar links de vídeos ou materiais de apoio', textAlign: TextAlign.center,),
+                                        Padding(padding: EdgeInsets.all(10)),
+                                        Text(
+                                            'Pedimos que após o teste, faça a pesquisa de opnião, acessando o menu superior, e clicando em pesquisa', textAlign: TextAlign.center),
                                       ],
                                     ),
                                   ),
                                   actions: <Widget>[
                                     FlatButton(
                                         onPressed: () {
-                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Lista(usu: txtnome.text), ));
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    Lista(usu: txtnome.text),
+                                              ));
                                         },
                                         child: Text('Continuar',
                                             style: TextStyle(fontSize: 20))),
-                                   
-                                   
                                   ],
                                 ),
                               )),
